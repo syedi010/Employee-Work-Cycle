@@ -1,0 +1,30 @@
+package com.example.DTO;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+
+public class BGVRequestDTO {
+
+
+    @NotBlank(message="SSC certificate number cannot be blank")
+    private String sscCertificateNumber;
+    @NotNull(message="SSC passout year cannot be null")
+    private Integer sscPassoutYear;
+    @NotBlank(message="hscCertificateNumber cannot be null")
+    private String hscCertificateNumber;
+    private Integer hscPassoutYear;
+
+    private String graduationCertificateNumber;
+    private Integer graduationPassoutYear;
+
+    private String status; // Pending, Verified, Rejected
+}

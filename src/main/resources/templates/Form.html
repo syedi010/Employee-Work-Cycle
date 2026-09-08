@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 500px; margin: 50px auto; }
+        label { display: block; margin-top: 10px; }
+        input { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 15px; padding: 8px 12px; display:block; width: 100%; }
+        .message { color: green; font-weight: bold; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Form</h2>
+
+        <form th:action="@{/saveEmployee}" th:object="${employee}" method="post">
+            <label>Employee Name</label>
+            <input type="text" th:field="${employee.emp_name}" required />
+
+            <label>Employee ID</label>
+            <input type="text" th:field="${employee.emp_id}" required />
+
+            <label>Age</label>
+            <input type="text" th:field="${employee.age}" required />
+
+            <label>Title</label>
+            <input type="text" th:field="${employee.title}" required />
+
+            <label>Organization</label>
+            <input type="text" th:field="${employee.organization}" required />
+
+            <h3>BGV Details</h3>
+            <label>SSC Certificate Number</label>
+            <input type="text" th:field="${employee.bgvStatus.sscCertificateNumber}" />
+
+            <label>SSC Passout Year</label>
+            <input type="number" th:field="${employee.bgvStatus.sscPassoutYear}" />
+
+            <label>HSC Certificate Number</label>
+            <input type="text" th:field="${employee.bgvStatus.hscCertificateNumber}" />
+
+            <label>HSC Passout Year</label>
+            <input type="number" th:field="${employee.bgvStatus.hscPassoutYear}" />
+
+            <label>Graduation Certificate Number</label>
+            <input type="text" th:field="${employee.bgvStatus.graduationCertificateNumber}" />
+
+            <label>Graduation Passout Year</label>
+            <input type="number" th:field="${employee.bgvStatus.graduationPassoutYear}" />
+
+            <label>Status</label>
+            <select id="statusfield" th:field="${employee.bgvStatus.status}">
+                <option value="" disabled selected>Status</option>
+                <option value="Verified">Valued</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Hold">Hold</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div th:if="${message}" class="message" th:text="${message}"></div>
+    </div>
+</body>
+</html>
